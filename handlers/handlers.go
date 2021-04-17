@@ -33,6 +33,7 @@ func Handlers() {
 	router.HandleFunc("/uploadAvatar", middlew.DBcheck(routers.UploadAvatar)).Methods("POST")
 	router.HandleFunc("/uploadBanner", middlew.DBcheck(routers.UploadAvatar)).Methods("POST")
 	router.HandleFunc("/listUsers", middlew.DBcheck(middlew.JWTValidate(routers.ListUsers))).Methods("GET")
+	router.HandleFunc("/getFollowTweets", middlew.DBcheck(middlew.JWTValidate(routers.GetTweetsRelation))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
